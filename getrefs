@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "usage: $(basename $0) symbol"
+    exit 1
+fi
+
+opts="--result=grep --color=auto"
+
+(global ${opts} -d $1
+ global ${opts} -r $1
+ global ${opts} -s $1) | sort -V # -V = hack to sort embedded line numbers

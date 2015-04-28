@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#mkid --lang-option=python:-q
+
+export GTAGSCONF=/usr/share/gtags/gtags.conf
+export GTAGSLABEL=pygments
+gtags
+
+ctags -R
