@@ -1,12 +1,17 @@
-#!/bin/bash
+#!/usr/bin/fish
 
-if [ -z "$1" ]; then
-    echo "usage: $(basename $0) symbol"
+if [ (count $argv) -ne 1 ]
+    echo "usage: "(basename (status -f))" symbol"
     exit 1
-fi
+end
 
-opts="--result=grep --color=auto"
+while [ (pwd) != $HOME -a ! -e ./tags ]
+    cd ..
+end
 
-(global ${opts} -d $1
- global ${opts} -r $1
- global ${opts} -s $1) | sort -V # -V = hack to sort embedded line numbers
+if [ ! -e ./tags ]
+    echo "no tags file found"
+    exit 1
+end
+
+/usr/bin/grep -n -w --color=auto $argv[1] **.py
