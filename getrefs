@@ -5,7 +5,7 @@ if [ (count $argv) -ne 1 ]
     exit 1
 end
 
-while [ (pwd) != $HOME -a ! -e ./tags ]
+while [ (pwd) != $HOME -a (pwd) != / -a ! -e ./tags ]
     cd ..
 end
 
