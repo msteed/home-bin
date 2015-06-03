@@ -1,3 +1,0 @@
-#!/bin/bash
-
-global --result=grep --color=auto -g "$@"
