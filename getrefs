@@ -14,4 +14,4 @@ if [ ! -e ./tags ]
     exit 1
 end
 
-/usr/bin/grep -n -w --color=auto $argv[1] **.{py,h,c,cpp}
+ag --vimgrep -s $argv[1] --ignore 'man' --ignore '*.html'
