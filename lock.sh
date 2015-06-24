@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dm-tool lock
+sxlock
