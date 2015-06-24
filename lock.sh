@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sxlock
+sxlock &
+sleep 1
+xset dpms force off
