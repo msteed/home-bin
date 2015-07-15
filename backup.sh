@@ -15,6 +15,9 @@ rdiff-backup \
     --exclude '/**/lost+found' \
     --exclude '/home/*/.cache' \
     --exclude '/home/*/.config' \
+    --exclude '/home/*/.dbus' \
+    --exclude '/home/*/.dropbox*' \
+    --exclude '/home/*/.gvfs' \
     --exclude '/home/*/Downloads' \
     --exclude '/home/*/VirtualBox*' \
     / /mnt/(hostname)
