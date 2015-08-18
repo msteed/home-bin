@@ -10,6 +10,7 @@ rdiff-backup \
     --exclude /proc \
     --exclude /run \
     --exclude /sys \
+    --exclude /tmp \
     --exclude /var \
     --exclude '/home/*/.cache' \
     --exclude '/home/*/.config' \
