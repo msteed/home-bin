@@ -14,4 +14,4 @@ if [ ! -e ./tags ]
     exit 1
 end
 
-ag --vimgrep -s $argv[1] --ignore 'man' --ignore '*.html'
+ag --vimgrep -s -f $argv[1] --ignore 'man' --ignore '*.html'
