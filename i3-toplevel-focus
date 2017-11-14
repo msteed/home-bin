@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+# Switch focus between second-level containers
+# (workspace -> con1 -> con2)
+
+import i3ipc
+import os
+import sys
+
+lr = sys.argv[1]
+
+i3 = i3ipc.Connection()
+
+con = i3.get_tree().find_focused()
+while con.parent and con.parent.parent.type != 'workspace':
+    con = con.parent
+con.command('focus')
+con.command('focus {}'.format(lr))
+# XXX find the right container without focusing twice

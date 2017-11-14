@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+# Focus a container by number
+
+import i3ipc
+import os
+import sys
+
+num = int(sys.argv[1])
+
+i3 = i3ipc.Connection()
+
+focused = i3.get_tree().find_focused()
+if focused.type == 'con':
+    siblings = [con for con in focused.parent.descendents() if con.parent.id == focused.parent.id]
+    if len(siblings) >= num:
+        siblings[num - 1].command('focus')
