@@ -1,19 +1,30 @@
 #!/usr/bin/env python
 
-# Switch focus between second-level containers
-# (workspace -> con1 -> con2)
+# Switch focus between top-level containers
+# (workspace -> [con1, con2, ...]
 
 import i3ipc
 import os
 import sys
 
-lr = sys.argv[1]
+lr = sys.argv[1]  # 'left' or 'right'
 
 i3 = i3ipc.Connection()
 
-con = i3.get_tree().find_focused()
-while con.parent and con.parent.parent.type != 'workspace':
-    con = con.parent
-con.command('focus')
-con.command('focus {}'.format(lr))
-# XXX find the right container without focusing twice
+focused = i3.get_tree().find_focused()
+ws = focused
+while ws and ws.type != 'workspace':
+    focused = ws
+    ws = ws.parent
+
+# Now `focused` is the top-level parent (just below workspace `ws`) which
+# contains the focused window. Get its sibling containers, which are the
+# candidates for cycling the focus.
+toplevel = [c for c in ws.descendents() if c.parent == ws]
+
+# Get the position of the container containing the focus, then move the focus
+# to the left or right.
+idx = toplevel.index(focused)
+idx = idx - 1 if lr == 'left' else idx + 1
+target = toplevel[-1] if idx < 0 else toplevel[idx % len(toplevel)]
+target.command('focus, focus child')
