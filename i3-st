@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
 exec /usr/bin/st \
-    -f Inconsolata:pixelsize=16:antialias=true:autohint=true \
+    -f Inconsolata:pixelsize=15:antialias=true:autohint=true \
     -e tmux -f $HOME/.tmux-st.conf
