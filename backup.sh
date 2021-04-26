@@ -17,9 +17,8 @@ rdiff-backup \
     --exclude '/home/*/.config' \
     --exclude '/home/*/.dbus' \
     --exclude '/home/*/.dropbox*' \
-    --exclude '/home/*/.gvfs' \
     --exclude '/home/*/Downloads' \
-    --exclude '/home/*/VirtualBox*' \
+    --exclude '/home/*/machines' \
     / /mnt/(hostname)
 
 umount /mnt
