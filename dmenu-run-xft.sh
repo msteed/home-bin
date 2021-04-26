@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dmenu="dmenu -fn Inconsolata-12 -nb \#dc322f -nf \#eee8d5 -sb \#b58900 -sf \#002b36"
+dmenu="dmenu -fn Hack-18 -nb \#dc322f -nf \#eee8d5 -sb \#b58900 -sf \#002b36"
 
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
 if [ -d "$cachedir" ]; then
